@@ -24,7 +24,7 @@ define root view entity ZATS_RA_TRAVEL_PROCESSOR
       @Semantics.text: true
       Description,
       @ObjectModel.text.element: [ 'StatusText' ]
-      @Consumption.valueHelpDefinition: [{ entity.name: '/DMO/I_Travel_Status_VH' , entity.element: 'TravelStatus' }]
+      @Consumption.valueHelpDefinition: [{ entity.name: '/DMO/I_Overall_Status_VH' , entity.element: 'OverallStatus' }]
       OverallStatus,
       CreatedBy,
       CreatedAt,
