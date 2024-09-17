@@ -1,5 +1,6 @@
 @EndUserText.label: 'Booking Suppliment Processor - Projection Layer'
 @AccessControl.authorizationCheck: #NOT_REQUIRED
+@Metadata.allowExtensions: true
 define view entity ZATS_RA_BOOKSUPPL_PROCESSOR
   as projection on ZATS_RA_BOOKSUPPL
 {

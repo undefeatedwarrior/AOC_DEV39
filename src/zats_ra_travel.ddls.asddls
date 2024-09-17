@@ -29,7 +29,22 @@ define root view entity ZATS_RA_TRAVEL
       @Semantics.systemDateTime.createdAt: true
       created_at      as CreatedAt,
       @Semantics.user.lastChangedBy: true
+
       last_changed_by as LastChangedBy,
+      case overall_status
+          when 'O' then 'Open'
+          when 'A' then 'Approved'
+          when 'R' then 'Rejected'
+          when 'X' then 'Cancelled'
+      end             as StatusText,
+
+      case overall_status
+          when 'O' then 2
+          when 'A' then 3
+          when 'R' then 1
+          when 'X' then 1
+      end             as Criticality,
+
 
       //E-Tag Field - OData E-Tag
       @Semantics.systemDateTime.lastChangedAt: true
