@@ -5,14 +5,14 @@ define root view entity ZATS_RA_TRAVEL_PROCESSOR
   as projection on ZATS_RA_TRAVEL
 {
       @ObjectModel.text.element: [ 'Description' ]
-  key TravelId,
-      @ObjectModel.text.element: [ 'AgencyName' ]
-      @Consumption.valueHelpDefinition: [{ entity.name: '/dmo/i_agency' , entity.element: 'AgencyID' }]
+      key TravelId,
+      @ObjectModel.text.element: [ 'AgencyName' ] // Text element is AgencyName
+      @Consumption.valueHelpDefinition: [{ entity.name: '/dmo/i_agency' , entity.element: 'AgencyID' }] //For Value Help
       AgencyId,
-      @Semantics.text: true
+      @Semantics.text: true // Text element for AgencyId
       _Agency.Name       as AgencyName,
       @ObjectModel.text.element: [ 'CustomerName' ]
-      @Consumption.valueHelpDefinition: [{ entity.name: '/DMO/I_Customer' , entity.element: 'CustomerID' }]
+      @Consumption.valueHelpDefinition: [{ entity.name: '/DMO/I_Customer' , entity.element: 'CustomerID' }] //For Value Help
       CustomerId,
       @Semantics.text: true
       _Customer.LastName as CustomerName,
@@ -24,7 +24,7 @@ define root view entity ZATS_RA_TRAVEL_PROCESSOR
       @Semantics.text: true
       Description,
       @ObjectModel.text.element: [ 'StatusText' ]
-      @Consumption.valueHelpDefinition: [{ entity.name: '/DMO/I_Overall_Status_VH' , entity.element: 'OverallStatus' }]
+      @Consumption.valueHelpDefinition: [{ entity.name: '/DMO/I_Overall_Status_VH' , entity.element: 'OverallStatus' }] //For Value Help
       OverallStatus,
       CreatedBy,
       CreatedAt,
@@ -35,7 +35,7 @@ define root view entity ZATS_RA_TRAVEL_PROCESSOR
       Criticality,
       /* Associations */
       _Agency,
-      _Booking,
+      _Booking : redirected to composition child ZATS_RA_BOOKING_PROCESSOR,
       _Currency,
       _Customer,
       _OverallStatus
