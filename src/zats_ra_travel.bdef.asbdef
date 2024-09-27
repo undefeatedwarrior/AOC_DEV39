@@ -1,0 +1,49 @@
+managed implementation in class zbp_ats_ra_travel unique;
+//Enabling the strict mode (and version) to apply additional syntax checks; handled by
+//the RAP framework; it is recommended that you use the most recent version
+strict ( 2 );
+
+
+
+define behavior for ZATS_RA_TRAVEL alias Travel
+persistent table /dmo/travel_m
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) TravelId;
+  association _Booking { create; }
+}
+
+
+
+define behavior for ZATS_RA_BOOKING alias Booking
+persistent table /dmo/booking_m
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId;
+  association _Travel;
+  association _BookingSupplement { create; }
+}
+
+
+
+define behavior for ZATS_RA_BOOKSUPPL alias BookSuppl
+persistent table /dmo/booksuppl_m
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId, BookingSupplementId;
+  association _Travel;
+  association _Booking;
+}
