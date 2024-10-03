@@ -7,8 +7,23 @@ define view entity ZATS_RA_BOOKING_PROCESSOR
   key TravelId,
   key BookingId,
       BookingDate,
+      @Consumption.valueHelpDefinition: [{ 
+        entity.name: '/DMO/I_Customer' , entity.element: 'CustomerID' 
+       }] //For Value Help
       CustomerId,
+      
+      @Consumption.valueHelpDefinition: [{ 
+        entity.name: '/DMO/I_Carrier', entity.element: 'AirlineID'
+       }]
       CarrierId,
+      
+      @Consumption.valueHelpDefinition: [{ 
+        entity.name: '/DMO/I_Connection', entity.element: 'ConnectionID',
+        additionalBinding: [{ 
+            localElement: 'CarrierId',
+            element: 'AirlineID'
+         }]
+       }]
       ConnectionId,
       FlightDate,
       FlightPrice,

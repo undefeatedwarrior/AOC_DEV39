@@ -15,5 +15,5 @@ define view entity ZATS_RA_BOOKSUPPL_PROCESSOR
       _Booking: redirected to parent ZATS_RA_BOOKING_PROCESSOR,
       _Product,
       _SupplementText,
-      _Travel
+      _Travel: redirected to ZATS_RA_TRAVEL_PROCESSOR
 }
